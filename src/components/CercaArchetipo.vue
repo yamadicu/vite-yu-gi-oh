@@ -13,7 +13,7 @@ export default {
 <template>
     <div>
         <input type="text" placeholder="Seleziona carte in base all'archetipo" v-model="store.Cerca">
-        <button type="submit" @click.prevent="$emite('nomeEmit')">cerca</button>
+        <button type="submit" @click.prevent="$emit('nomeEmit')">cerca</button>
     </div>
 </template>
 

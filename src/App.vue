@@ -15,23 +15,33 @@ export default {
     }
   },
   created() {
-    if (store.Cerca !== '') {
+    this.emit();
 
-      axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.Cerca}`)
-        .then((res) => {
+  },
+  methods: {
 
-          const datiCard = res.data.data
 
-          this.store.arrayCarte = datiCard
-        })
-    } else {
-      axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=alien`)
-        .then((res) => {
+    emit() {
+      console.log("emit", this.store.Cerca)
 
-          const datiCard = res.data.data
+      if (store.Cerca !== '') {
 
-          this.store.arrayCarte = datiCard
-        })
+        axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${this.store.Cerca}`)
+          .then((res) => {
+
+            const datiCard = res.data.data
+
+            this.store.arrayCarte = datiCard
+          })
+      } else {
+        axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=alien`)
+          .then((res) => {
+
+            const datiCard = res.data.data
+
+            this.store.arrayCarte = datiCard
+          })
+      }
     }
   }
 }
@@ -39,7 +49,7 @@ export default {
 
 <template>
   <HeaderComp />
-  <MainComp />
+  <MainComp @created="emit" />
 </template>
 
 <style lang="scss">

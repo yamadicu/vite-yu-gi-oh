@@ -22,7 +22,7 @@ export default {
 
             <div id="selezione">
 
-                <CercaArchetipo @nomeEmite="created" />
+                <CercaArchetipo @nomeEmit="$emit('created')" />
 
             </div>
             <!-- SEZIONE CHE CONTERRA LE CARTE -->
