@@ -7,7 +7,7 @@ export default {
   name: 'app',
   components: {
     HeaderComp,
-    MainComp
+    MainComp,
   },
   data() {
     return {
@@ -15,15 +15,24 @@ export default {
     }
   },
   created() {
-    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Alien')
-      .then((res) => {
+    if (store.Cerca !== '') {
 
-        const datiCard = res.data.data
+      axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.Cerca}`)
+        .then((res) => {
 
-        this.store.arrayCarte = datiCard
+          const datiCard = res.data.data
 
-        console.log();
-      })
+          this.store.arrayCarte = datiCard
+        })
+    } else {
+      axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=alien`)
+        .then((res) => {
+
+          const datiCard = res.data.data
+
+          this.store.arrayCarte = datiCard
+        })
+    }
   }
 }
 </script>

@@ -1,10 +1,12 @@
 <script>
 import { store } from '../store'
 import CardComp from './CardComp.vue';
+import CercaArchetipo from './CercaArchetipo.vue';
 export default {
     name: 'MainComp',
     components: {
-        CardComp
+        CardComp,
+        CercaArchetipo,
     }, data() {
         return {
             store
@@ -20,12 +22,8 @@ export default {
 
             <div id="selezione">
 
-                <div class="dropdown">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Alien
-                    </a>
-                </div>
+                <CercaArchetipo @nomeEmite="created" />
+
             </div>
             <!-- SEZIONE CHE CONTERRA LE CARTE -->
             <div id="sez-card" class="scroll">
@@ -63,6 +61,7 @@ export default {
             margin-top: 20px;
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             overflow: auto;
         }
 
