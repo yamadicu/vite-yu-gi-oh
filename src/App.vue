@@ -15,13 +15,14 @@ export default {
     }
   },
   created() {
-    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php')
+    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Alien')
       .then((res) => {
-        console.log(res.data.data);
 
         const datiCard = res.data.data
 
         this.store.arrayCarte = datiCard
+
+        console.log();
       })
   }
 }
